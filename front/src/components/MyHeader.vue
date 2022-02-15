@@ -14,7 +14,9 @@
         <el-menu-item>开始上课</el-menu-item>
         <el-menu-item>结束上课</el-menu-item>
       </el-sub-menu>
-      <el-menu-item>详细</el-menu-item>
+      <el-menu-item @click="studyShow=true">学习</el-menu-item>
+      <el-menu-item @click="studyShow=false">详细</el-menu-item>
+      <el-menu-item>{{ studyShow }}</el-menu-item>
     </el-menu>
   </el-header>
 </template>

@@ -1,19 +1,15 @@
 <template>
-  <div class="common-layout">
-    <el-container direction="vertical">
-      <MyHeader/>
-      <el-container>
-        <el-main>Main</el-main>
-        <el-aside>
-          <video id="v"></video>
-        </el-aside>
-      </el-container>
+  <div id="study">
+    <el-container>
+      <el-main>Main</el-main>
+      <el-aside>
+        <video id="v"></video>
+      </el-aside>
     </el-container>
   </div>
 </template>
 
 <script>
-import MyHeader from "@/components/MyHeader";
 
 // 调用摄像头
 !(function () {
@@ -61,24 +57,20 @@ import MyHeader from "@/components/MyHeader";
 
 export default {
   name: "study",
-  components: {
-    MyHeader
-  }
+  components: {}
 }
 </script>
 
 <style scoped>
-.common-layout > .el-container {
-  height: 100vh;
+#study {
+  flex: 1;
 }
 
-.common-layout .el-header {
-  background-color: #b3c0d1;
-  text-align: center;
-  padding: 0px;
+.el-container{
+  height: 100%;
 }
 
-.common-layout .el-aside {
+.el-aside {
   background-color: #d3dce6;
   text-align: center;
   line-height: 60px;
@@ -86,14 +78,14 @@ export default {
   height: 100%;
 }
 
-.common-layout .el-main {
+.el-main {
   background-color: #e9eef3;
   text-align: center;
   line-height: 60px;
   padding: 0px;
 }
 
-video{
+video {
   width: 100%;
 }
 </style>

@@ -1,10 +1,15 @@
 <template>
-  <p>detail</p>
-  <div id="main" style="width: 600px;height:400px;"></div>
+  <div id="detail">
+    <div>
+      <el-card class="box-card">
+        <div v-for="o in 4" :key="o" class="text item">{{ 'List item ' + o }}</div>
+      </el-card>
+    </div>
+    <div id="main" style="width: 600px;height:400px;"></div>
+  </div>
 </template>
 
 <script>
-// 基于准备好的dom，初始化echarts实例
 import * as echarts from "echarts";
 
 export default {
@@ -42,5 +47,26 @@ export default {
 </script>
 
 <style scoped>
+#detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
 
+#detail > div {
+  margin: 30px;
+}
+
+.text {
+  font-size: 14px;
+}
+
+.item {
+  padding: 18px 0;
+}
+
+.box-card {
+  width: 480px;
+}
 </style>

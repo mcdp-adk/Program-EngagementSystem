@@ -8,6 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@element-plus/icons-vue": "^0.2.7",
     "agora-rtc-sdk-ng": "^4.9.0",
     "core-js": "^3.6.5",
     "echarts": "^5.3.0",

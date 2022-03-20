@@ -13,33 +13,41 @@
         active-text-color="#fff"
         @select="handleSelect"
     >
-      <el-sub-menu>
-        <template #title>上课</template>
-        <el-menu-item>开始上课</el-menu-item>
-        <el-menu-item>结束上课</el-menu-item>
-      </el-sub-menu>
-      <el-menu-item @click="studyShow=true">学习</el-menu-item>
-      <el-menu-item @click="studyShow=false">详细</el-menu-item>
+      <el-menu-item @click="userShow=true,studyShow=false,detailShow=false">设置</el-menu-item>
+      <el-menu-item @click="studyShow=true,userShow=false,detailShow=false">学习</el-menu-item>
+      <el-menu-item @click="detailShow=true,userShow=false,studyShow=false">详细</el-menu-item>
     </el-menu>
   </el-header>
 
+  <user @receiveData="setData" v-if="userShow"/>
   <study v-if="studyShow"/>
-  <detail v-if="!studyShow"/>
+  <detail v-if="detailShow"/>
 </template>
 
 <script>
+import user from "@/components/user";
 import study from "@/components/study";
 import detail from "@/components/detail";
 
 export default {
   name: 'App',
   components: {
+    user,
     study,
     detail
   },
   data() {
     return {
-      studyShow: true
+      userShow: true,
+      studyShow: false,
+      detailShow: false,
+      dataBase: "",
+      user: {}
+    }
+  },
+  methods: {
+    setData(data) {
+      this.user = data;
     }
   }
 }

@@ -2,10 +2,28 @@
   <div id="detail">
     <div>
       <el-card class="box-card">
-        <div v-for="o in 4" :key="o" class="text item">{{ 'List item ' + o }}</div>
+        <template #header>
+          <span>🎉课堂情况分析</span>
+        </template>
+        <p>课程名称➡️2022 级大物</p>
+        <p>授课教师➡️李洋</p>
+        <p>上课时间➡️17:49:12</p>
       </el-card>
     </div>
     <div id="main" style="width: 600px;height:400px;"></div>
+    <el-card class="box-card">
+      <template #header>
+        <span>✅以下同学表现较好</span>
+      </template>
+      <p>👦张三</p>
+      <p>👧李四</p>
+    </el-card>
+    <el-card class="box-card">
+      <template #header>
+        <span>⚠️以下同学还需努力</span>
+      </template>
+      <p>👦李华</p>
+    </el-card>
   </div>
 </template>
 
@@ -21,21 +39,20 @@ export default {
     // 指定图表的配置项和数据
     var option = {
       title: {
-        text: 'ECharts 入门示例'
-      },
-      tooltip: {},
-      legend: {
-        data: ['销量']
+        text: '课堂整体专注度曲线'
       },
       xAxis: {
-        data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+        type: 'category',
+        data: ['0', '5', '10', '15', '20', '25', '30', '35', '40']
       },
-      yAxis: {},
+      yAxis: {
+        type: 'value'
+      },
       series: [
         {
-          name: '销量',
-          type: 'bar',
-          data: [5, 20, 36, 10, 10, 20]
+          data: [40, 50, 80, 95, 75, 60, 90, 85, 80],
+          type: 'line',
+          smooth: true
         }
       ]
     };
@@ -66,7 +83,16 @@ export default {
   padding: 18px 0;
 }
 
-.box-card {
-  width: 480px;
+.el-card {
+  width: 600px;
+}
+
+.el-card span {
+  font-size: x-large;
+  margin: 0px;
+}
+
+.el-card p {
+  font-size: larger;
 }
 </style>

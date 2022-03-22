@@ -10,6 +10,9 @@
           <el-button id="share">共享屏幕</el-button>
         </el-col>
         <el-col :span="2">
+          <el-button id="stop">停止共享</el-button>
+        </el-col>
+        <el-col :span="2">
           <el-button id="leave">离开频道</el-button>
         </el-col>
       </el-row>
@@ -24,7 +27,6 @@ let rtc = {
   // For the local audio and video tracks.
   localAudioTrack: null,
   localVideoTrack: null,
-  localMicrophoneTrack: null,
   client: null
 };
 
@@ -36,12 +38,23 @@ let options = {
   // Set the user role in the channel.
   role: "audience",
   // Use a temp token
-  token: "0068aaf87961df2495d97f7497e553e8817IADaN/s1imbL3N8CZ1cGWqZv+K2SwTR4zZyxczuWfTm18Qx+f9gAAAAAEAAn2yw6rJgYYgEAAQCmmBhi",
+  token: "0068aaf87961df2495d97f7497e553e8817IABvA7PUBha+3fv8MuK4gu326DsWr+mMSOxZfn3QjA2U7gx+f9gAAAAAIgCM0LCMruw5YgQAAQA+qThiAgA+qThiAwA+qThiBAA+qThi",
+  // Uid
+  uid: 123456
 };
 
 let clientRoleOptions = {
   // Set latency level to low latency
   level: 1
+}
+
+function stopShare() {
+  if (document.getElementById(options.uid)) {
+    if (rtc.localVideoTrack) rtc.localVideoTrack.close();
+    if (rtc.localAudioTrack) rtc.localAudioTrack.close();
+    const playerContainer = document.getElementById(options.uid);
+    playerContainer.remove();
+  }
 }
 
 async function startBasicLiveStreaming() {
@@ -52,36 +65,45 @@ async function startBasicLiveStreaming() {
 
     document.getElementById("join").onclick = async function () {
       rtc.client.setClientRole(options.role, clientRoleOptions);
-      await rtc.client.join(options.appId, options.channel, options.token);
+      await rtc.client.join(options.appId, options.channel, options.token, options.uid);
+    }
+
+    document.getElementById("share").onclick = async function () {
+      await rtc.client.setClientRole("host");
+      await rtc.client.join(options.appId, options.channel, options.token, options.uid);
+      AgoraRTC.createScreenVideoTrack({
+        withAudio: "enable"
+      }).then((ILocalVideoTrack, ILocalAudioTrack) => {
+        rtc.localVideoTrack = ILocalVideoTrack;
+        rtc.localAudioTrack = ILocalAudioTrack;
+        rtc.client.publish(rtc.localVideoTrack, rtc.localAudioTrack);
+
+        const playerContainer = document.createElement("div");
+        playerContainer.id = options.uid.toString();
+        playerContainer.style.width = "100%";
+        playerContainer.style.height = "100%";
+        document.getElementById("video").append(playerContainer);
+        rtc.localVideoTrack.play(playerContainer);
+      });
+    }
+
+    document.getElementById("stop").onclick = async function () {
+      stopShare();
     }
 
     document.getElementById("leave").onclick = async function () {
+      stopShare();
+
       // Traverse all remote users.
       rtc.client.remoteUsers.forEach(user => {
         // Destroy the dynamically created DIV containers.
-        const playerContainer = document.getElementById(user.uid);
-        playerContainer && playerContainer.remove();
+        const remoteContainer = document.getElementById(user.uid);
+        remoteContainer.remove();
       });
 
       // Leave the channel.
-      await rtc.client.unpublish();
       await rtc.client.leave();
     }
-  }
-
-  document.getElementById("share").onclick = async function () {
-    await rtc.client.setClientRole("host");
-    await rtc.client.join(options.appId, options.channel, options.token);
-    AgoraRTC.createScreenVideoTrack({
-      withAudio: "enable"
-    }).then((ILocalVideoTrack, ILocalAudioTrack) => {
-      rtc.localVideoTrack = ILocalVideoTrack;
-      rtc.localAudioTrack = ILocalAudioTrack;
-      rtc.client.publish(rtc.localVideoTrack, rtc.localAudioTrack);
-
-      const PlayerContainer = document.getElementById("video");
-      rtc.localVideoTrack.play(PlayerContainer);
-    });
   }
 
   rtc.client.on("user-published", async (user, mediaType) => {
@@ -94,13 +116,12 @@ async function startBasicLiveStreaming() {
       // Get `RemoteVideoTrack` in the `user` object.
       const remoteVideoTrack = user.videoTrack;
       // Dynamically create a container in the form of a DIV element for playing the remote video track.
-      const remotePlayerContainer = document.getElementById("video");
+      const remotePlayerContainer = document.createElement("div");
       // Specify the ID of the DIV container. You can use the `uid` of the remote user.
-      // remotePlayerContainer.id = user.uid.toString();
-      // remotePlayerContainer.textContent = "Remote user " + user.uid.toString();
-      // remotePlayerContainer.style.width = "640px";
-      // remotePlayerContainer.style.height = "480px";
-      // document.body.append(remotePlayerContainer);
+      remotePlayerContainer.id = user.uid.toString();
+      remotePlayerContainer.style.width = "100%";
+      remotePlayerContainer.style.height = "100%";
+      document.getElementById("video").append(remotePlayerContainer);
 
       // Play the remote video track.
       // Pass the DIV container and the SDK dynamically creates a player in the container for playing the remote video track.
@@ -119,9 +140,9 @@ async function startBasicLiveStreaming() {
     }
   });
 
-  rtc.client.on("user-unpublished", () => {
+  rtc.client.on("user-unpublished", user => {
     // Get the dynamically created DIV container.
-    const remotePlayerContainer = document.getElementById("video");
+    const remotePlayerContainer = document.getElementById(user.uid);
     // Destroy the container.
     remotePlayerContainer.remove();
   });
@@ -143,7 +164,7 @@ export default {
 }
 
 #video {
-  background-color: #42b983;
+  background-color: #ffffff;
   height: 100%;
   width: 100%;
 }

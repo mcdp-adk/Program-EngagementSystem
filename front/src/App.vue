@@ -19,8 +19,8 @@
     </el-menu>
   </el-header>
 
-  <user @receiveData="setData" v-if="userShow"/>
-  <study v-if="studyShow"/>
+  <user @receiveData="setData" v-show="userShow"/>
+  <study v-show="studyShow"/>
   <detail v-if="detailShow"/>
 </template>
 

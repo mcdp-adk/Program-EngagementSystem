@@ -8,8 +8,8 @@
         <span>Channel：</span>
         <el-input v-model="user.channel" placeholder="Your channel"/>
         <div>
-          <el-radio v-model="user.identity" label="1" size="larger">Teacher</el-radio>
-          <el-radio v-model="user.identity" label="2" size="larger">Student</el-radio>
+          <el-radio v-model="user.role" label="0" size="larger">Teacher</el-radio>
+          <el-radio v-model="user.role" label="1" size="larger">Student</el-radio>
         </div>
         <br>
         <el-button @click="saveData">Save</el-button>
@@ -28,7 +28,7 @@ export default {
       user: {
         uname: '',
         channel: '',
-        identity: ''
+        role: ''
       }
     }
   },
@@ -39,7 +39,7 @@ export default {
       let xhr = new XMLHttpRequest();
       xhr.open('post', host + '/users/insert');
       xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-      xhr.send("uname=" + this.user.uname + "&channel=" + this.user.channel + "&identity=" + this.user.identity);
+      xhr.send("uname=" + this.user.uname + "&channel=" + this.user.channel + "&role=" + this.user.role);
     }
   }
 }

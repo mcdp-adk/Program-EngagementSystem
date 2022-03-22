@@ -4,22 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="82b8fc82-0241-417a-b42d-9551653a4e24" name="变更" comment="Back end initial">
-      <change afterPath="$PROJECT_DIR$/db.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../front/src/components/agora.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../front/src/components/user.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../front/src/properties.js" afterDir="false" />
+    <list default="true" id="82b8fc82-0241-417a-b42d-9551653a4e24" name="变更" comment="基础数据传递 &amp; 线上 API">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/users.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../front/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../front/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../front/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../front/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front/src/components/detail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../front/src/components/detail.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front/src/components/study.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../front/src/components/study.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/../front/src/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front/src/components/agora.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../front/src/components/agora.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front/src/components/user.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../front/src/components/user.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +73,8 @@
       <updated>1644811420553</updated>
       <workItem from="1644811421818" duration="2503000" />
       <workItem from="1647417224540" duration="4183000" />
-      <workItem from="1647653285776" duration="6138000" />
+      <workItem from="1647653285776" duration="10871000" />
+      <workItem from="1647875828440" duration="1947000" />
     </task>
     <task id="LOCAL-00001" summary="Back end initial">
       <created>1644824957592</created>
@@ -90,7 +83,14 @@
       <option name="project" value="LOCAL" />
       <updated>1644824957592</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="基础数据传递 &amp; 线上 API">
+      <created>1647744838251</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1647744838251</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -133,6 +133,7 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Back end initial" />
-    <option name="LAST_COMMIT_MESSAGE" value="Back end initial" />
+    <MESSAGE value="基础数据传递 &amp; 线上 API" />
+    <option name="LAST_COMMIT_MESSAGE" value="基础数据传递 &amp; 线上 API" />
   </component>
 </project>

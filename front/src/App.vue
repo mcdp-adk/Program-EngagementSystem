@@ -20,14 +20,16 @@
   </el-header>
 
   <user @receiveData="setData" v-show="userShow"/>
-  <study v-show="studyShow"/>
-  <detail v-if="detailShow"/>
+  <study :user="user" v-show="studyShow"/>
+  <detail :user="user" v-if="detailShow"/>
 </template>
 
 <script>
 import user from "@/components/user";
 import study from "@/components/study";
 import detail from "@/components/detail";
+
+window.eel.say_hello_py("Hello");
 
 export default {
   name: 'App',
@@ -41,7 +43,6 @@ export default {
       userShow: true,
       studyShow: false,
       detailShow: false,
-      dataBase: "",
       user: {}
     }
   },

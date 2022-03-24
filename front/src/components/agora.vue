@@ -4,13 +4,13 @@
     <div id="controller">
       <el-row justify="center">
         <el-col :span="2">
-          <el-button id="join">加入频道</el-button>
+          <el-button v-if="user.role" id="join">加入频道</el-button>
         </el-col>
         <el-col :span="2">
-          <el-button id="share">共享屏幕</el-button>
+          <el-button v-if="!user.role" id="share">共享屏幕</el-button>
         </el-col>
         <el-col :span="2">
-          <el-button id="stop">停止共享</el-button>
+          <el-button v-if="!user.role" id="stop">停止共享</el-button>
         </el-col>
         <el-col :span="2">
           <el-button id="leave">离开频道</el-button>
@@ -34,11 +34,11 @@ let options = {
   // Pass your app ID here.
   appId: "8aaf87961df2495d97f7497e553e8817",
   // Set the channel name.
-  channel: "test",
+  channel: "",
   // Set the user role in the channel.
   role: "audience",
   // Use a temp token
-  token: "0068aaf87961df2495d97f7497e553e8817IABvA7PUBha+3fv8MuK4gu326DsWr+mMSOxZfn3QjA2U7gx+f9gAAAAAIgCM0LCMruw5YgQAAQA+qThiAgA+qThiAwA+qThiBAA+qThi",
+  token: "",
   // Uid
   uid: 123456
 };
@@ -64,13 +64,14 @@ async function startBasicLiveStreaming() {
   window.onload = function () {
 
     document.getElementById("join").onclick = async function () {
+      console.log(options);
       rtc.client.setClientRole(options.role, clientRoleOptions);
-      await rtc.client.join(options.appId, options.channel, options.token, options.uid);
+      await rtc.client.join(options.appId, options.channel, options.token);
     }
 
     document.getElementById("share").onclick = async function () {
       await rtc.client.setClientRole("host");
-      await rtc.client.join(options.appId, options.channel, options.token, options.uid);
+      await rtc.client.join(options.appId, options.channel, options.token);
       AgoraRTC.createScreenVideoTrack({
         withAudio: "enable"
       }).then((ILocalVideoTrack, ILocalAudioTrack) => {
@@ -150,8 +151,14 @@ async function startBasicLiveStreaming() {
 
 export default {
   name: "agora",
+  props: ["user"],
   mounted() {
-    startBasicLiveStreaming()
+    startBasicLiveStreaming();
+  },
+  updated() {
+    options.channel = this.user.channel;
+    options.token = this.user.token;
+    console.log(options);
   }
 }
 </script>

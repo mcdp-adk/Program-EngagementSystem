@@ -2,7 +2,7 @@
   <div id="study">
     <el-container>
       <el-main>
-        <agora/>
+        <agora :user="user"/>
       </el-main>
       <el-aside>
         <video id="v"></video>
@@ -72,6 +72,7 @@ function startCamera() {
 
 export default {
   name: "study",
+  props: ["user"],
   components: {
     agora
   },
@@ -119,7 +120,7 @@ video {
   margin: 0px;
 }
 
-.el-card p{
+.el-card p {
   font-size: xx-large;
 }
 </style>

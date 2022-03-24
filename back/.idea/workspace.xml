@@ -5,12 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="82b8fc82-0241-417a-b42d-9551653a4e24" name="变更" comment="基础数据传递 &amp; 线上 API">
+      <change afterPath="$PROJECT_DIR$/../front/app.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../front/app.spec" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../front/vue.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../front/web/css/app.0ef405b7.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../front/web/css/chunk-vendors.ccb705f1.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../front/web/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../front/web/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../front/web/js/app.aa1dfea0.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../front/web/js/app.aa1dfea0.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../front/web/js/chunk-vendors.47f12819.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../front/web/js/chunk-vendors.47f12819.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front/.idea/front.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../front/.idea/front.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../front/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../front/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../front/src/App.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../front/src/components/agora.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../front/src/components/agora.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front/src/components/detail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../front/src/components/detail.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front/src/components/study.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../front/src/components/study.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../front/src/components/user.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../front/src/components/user.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -74,7 +88,7 @@
       <workItem from="1644811421818" duration="2503000" />
       <workItem from="1647417224540" duration="4183000" />
       <workItem from="1647653285776" duration="10871000" />
-      <workItem from="1647875828440" duration="1947000" />
+      <workItem from="1647875828440" duration="7318000" />
     </task>
     <task id="LOCAL-00001" summary="Back end initial">
       <created>1644824957592</created>

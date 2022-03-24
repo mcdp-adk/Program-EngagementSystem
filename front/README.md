@@ -1,24 +1,29 @@
 # front
 
-## Project setup
-```
-npm install
+## 开发环境
+
+```python
+// app.py
+if __name__ == "__main__":
+    print("Opening python...")
+    start_eel(True)
 ```
 
-### Compiles and hot-reloads for development
-```
+```shell
+python app.py
 npm run serve
 ```
 
-### Compiles and minifies for production
+## 打包
+
+```python
+// app.py
+if __name__ == "__main__":
+    print("Opening python...")
+    start_eel(False)
 ```
+
+```shell
 npm run build
+python -m eel app.py web --onefile --noconsole
 ```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

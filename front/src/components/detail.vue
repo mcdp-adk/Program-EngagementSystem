@@ -5,8 +5,8 @@
         <template #header>
           <span>🎉课堂情况分析</span>
         </template>
-        <p>课程名称➡️2022 级大物</p>
-        <p>授课教师➡️李洋</p>
+        <p>频道➡️{{ user.channel }}</p>
+        <p>授课教师➡️{{user.uname}}</p>
         <p>上课时间➡️17:49:12</p>
       </el-card>
     </div>
@@ -32,6 +32,7 @@ import * as echarts from "echarts";
 
 export default {
   name: "detail",
+  props: ["user"],
   components: {},
   mounted() {
     var myChart = echarts.init(document.getElementById('main'));

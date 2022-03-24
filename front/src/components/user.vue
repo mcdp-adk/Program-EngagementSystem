@@ -28,18 +28,25 @@ export default {
       user: {
         uname: '',
         channel: '',
-        role: ''
+        role: '',
+        token: ''
       }
     }
   },
   methods: {
     saveData() {
-      this.$emit("receiveData", this.user);
-
+      let thisUser = this.user;
       let xhr = new XMLHttpRequest();
-      xhr.open('post', host + '/users/insert');
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          thisUser.token = xhr.responseText;
+        }
+      }
+      xhr.open('post', host + '/users/insert', false);
       xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
       xhr.send("uname=" + this.user.uname + "&channel=" + this.user.channel + "&role=" + this.user.role);
+
+      this.$emit("receiveData", this.user);
     }
   }
 }

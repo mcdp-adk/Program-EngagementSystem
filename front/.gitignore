@@ -21,3 +21,10 @@ pnpm-debug.log*
 *.njsproj
 *.sln
 *.sw?
+
+# Python 打包文件
+/__pycache__
+/build
+/dist
+/web
+/*.spec

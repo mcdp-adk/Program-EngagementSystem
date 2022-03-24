@@ -102,9 +102,3 @@ dist
 
 # TernJS port file
 .tern-port
-
-# Python 打包文件
-__pycache__
-build
-dist
-web

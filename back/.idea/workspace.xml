@@ -5,8 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="82b8fc82-0241-417a-b42d-9551653a4e24" name="变更" comment="基础数据传递 &amp; 线上 API">
-      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../front/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front/web/css/app.0ef405b7.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front/web/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../front/web/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front/web/js/app.aa1dfea0.js" beforeDir="false" afterPath="$PROJECT_DIR$/../front/web/js/app.aa1dfea0.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front/web/js/app.aa1dfea0.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../front/web/js/app.aa1dfea0.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front/web/js/chunk-vendors.47f12819.js" beforeDir="false" afterPath="$PROJECT_DIR$/../front/web/js/chunk-vendors.47f12819.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +74,8 @@
       <workItem from="1644811421818" duration="2503000" />
       <workItem from="1647417224540" duration="4183000" />
       <workItem from="1647653285776" duration="10871000" />
-      <workItem from="1647875828440" duration="7318000" />
+      <workItem from="1647875828440" duration="7367000" />
+      <workItem from="1648302292368" duration="2946000" />
     </task>
     <task id="LOCAL-00001" summary="Back end initial">
       <created>1644824957592</created>

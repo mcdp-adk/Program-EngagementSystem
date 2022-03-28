@@ -2,7 +2,7 @@
   <div id="study">
     <el-container>
       <el-main>
-        <agora :user="user"/>
+        <agora :study-user="user"/>
       </el-main>
       <el-aside>
         <video id="v"></video>
@@ -72,13 +72,23 @@ function startCamera() {
 
 export default {
   name: "study",
-  props: ["user"],
+  props: ["appUser"],
   components: {
     agora
+  },
+  data() {
+    return {
+      user: this.appUser
+    }
   },
   mounted() {
     // 调用摄像头
     startCamera();
+  },
+  watch: {
+    appUser(val) {
+      this.user = val;
+    }
   }
 }
 </script>

@@ -36,7 +36,7 @@ router.post('/token', function (req, res) {
 
 // 插入数据
 router.post('/insert', function (req, res) {
-    req.send('uname=' + req.body.uname + '&channel=' + req.body.channel + '&role=' + req.body.role + '&timestamp=' + req.body.timestamp + '&value=' + req.body.value);
+    res.send('uname=' + req.body.uname + '&channel=' + req.body.channel + '&role=' + req.body.role + '&timestamp=' + req.body.timestamp + '&value=' + req.body.value);
 })
 
 module.exports = router;

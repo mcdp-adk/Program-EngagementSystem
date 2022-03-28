@@ -16,20 +16,19 @@
       <el-menu-item @click="userShow=true,studyShow=false,detailShow=false">设置</el-menu-item>
       <el-menu-item @click="studyShow=true,userShow=false,detailShow=false">学习</el-menu-item>
       <el-menu-item @click="detailShow=true,userShow=false,studyShow=false">详细</el-menu-item>
+      <el-menu-item @click="test01">测试</el-menu-item>
     </el-menu>
   </el-header>
 
-  <user @receiveData="setData" v-show="userShow"/>
-  <study :user="user" v-show="studyShow"/>
-  <detail :user="user" v-if="detailShow"/>
+  <user @receiveData="setData" v-if="userShow"/>
+  <study :app-user="user" v-if="studyShow"/>
+  <detail :app-user="user" v-if="detailShow"/>
 </template>
 
 <script>
 import user from "@/components/user";
 import study from "@/components/study";
 import detail from "@/components/detail";
-
-window.eel.say_hello_py("Hello");
 
 export default {
   name: 'App',
@@ -49,6 +48,11 @@ export default {
   methods: {
     setData(data) {
       this.user = data;
+    },
+    test01() {
+      window.eel.getNowAttention()().then(result => {
+        console.log(result);
+      })
     }
   }
 }

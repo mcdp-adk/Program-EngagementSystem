@@ -6,7 +6,7 @@
           <span>🎉课堂情况分析</span>
         </template>
         <p>频道➡️{{ user.channel }}</p>
-        <p>授课教师➡️{{user.uname}}</p>
+        <p>授课教师➡️{{ user.uname }}</p>
         <p>上课时间➡️17:49:12</p>
       </el-card>
     </div>
@@ -32,8 +32,13 @@ import * as echarts from "echarts";
 
 export default {
   name: "detail",
-  props: ["user"],
+  props: ["appUser"],
   components: {},
+  data() {
+    return {
+      user: this.appUser
+    }
+  },
   mounted() {
     var myChart = echarts.init(document.getElementById('main'));
 
@@ -60,6 +65,11 @@ export default {
 
     // 使用刚指定的配置项和数据显示图表。
     myChart.setOption(option);
+  },
+  watch: {
+    appUser: function (val) {
+      this.user = val;
+    }
   }
 }
 </script>

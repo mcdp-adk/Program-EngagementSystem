@@ -29,16 +29,19 @@ export default {
         uname: '',
         channel: '',
         role: '',
-        token: ''
+        token: '',
+        timestamp: '',
+        value: ''
       }
     }
   },
   methods: {
     saveData() {
+      this.user.role = parseInt(this.user.role);
       let thisUser = this.user;
       let xhr = new XMLHttpRequest();
       xhr.onreadystatechange = function () {
-        if (xhr.readyState == 4 && xhr.status == 200) {
+        if (xhr.readyState === 4 && xhr.status === 200) {
           thisUser.token = xhr.responseText;
         }
       }

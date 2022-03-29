@@ -39,32 +39,37 @@ export default {
       user: this.appUser
     }
   },
+  methods: {
+    createChart() {
+      let myChart = echarts.init(document.getElementById('main'));
+
+      // 指定图表的配置项和数据
+      let option = {
+        title: {
+          text: '课堂整体专注度曲线'
+        },
+        xAxis: {
+          type: 'category',
+          data: ['0', '5', '10', '15', '20', '25', '30', '35', '40']
+        },
+        yAxis: {
+          type: 'value'
+        },
+        series: [
+          {
+            data: [40, 50, 80, 95, 75, 60, 90, 85, 80],
+            type: 'line',
+            smooth: true
+          }
+        ]
+      };
+
+      // 使用刚指定的配置项和数据显示图表。
+      myChart.setOption(option);
+    }
+  },
   mounted() {
-    var myChart = echarts.init(document.getElementById('main'));
-
-    // 指定图表的配置项和数据
-    var option = {
-      title: {
-        text: '课堂整体专注度曲线'
-      },
-      xAxis: {
-        type: 'category',
-        data: ['0', '5', '10', '15', '20', '25', '30', '35', '40']
-      },
-      yAxis: {
-        type: 'value'
-      },
-      series: [
-        {
-          data: [40, 50, 80, 95, 75, 60, 90, 85, 80],
-          type: 'line',
-          smooth: true
-        }
-      ]
-    };
-
-    // 使用刚指定的配置项和数据显示图表。
-    myChart.setOption(option);
+    this.createChart();
   },
   watch: {
     appUser: function (val) {

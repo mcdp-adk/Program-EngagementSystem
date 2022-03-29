@@ -5,20 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="82b8fc82-0241-417a-b42d-9551653a4e24" name="变更" comment="服务器测试">
-      <change afterPath="$PROJECT_DIR$/../front/engagement.pth" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../front/engagement_detect.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../front/example.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../front/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../front/module.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front/.idea/front.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../front/.idea/front.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/../front/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../front/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../front/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../front/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../front/src/App.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../front/src/components/agora.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../front/src/components/agora.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../front/src/components/detail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../front/src/components/detail.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../front/src/components/study.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../front/src/components/study.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../front/src/components/user.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../front/src/components/user.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/../front/src/main.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +88,8 @@
       <workItem from="1648367170010" duration="94000" />
       <workItem from="1648388549906" duration="606000" />
       <workItem from="1648389828280" duration="599000" />
-      <workItem from="1648475298072" duration="3041000" />
+      <workItem from="1648475298072" duration="3123000" />
+      <workItem from="1648540345466" duration="10798000" />
     </task>
     <task id="LOCAL-00001" summary="Back end initial">
       <created>1644824957592</created>

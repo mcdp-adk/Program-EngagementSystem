@@ -31,12 +31,51 @@ router.get('/', function (req, res, next) {
 
 // 获取 Token
 router.post('/token', function (req, res) {
-    res.send(getToken(req.body.channel));
+    let token = getToken(req.body.channel);
+    res.send(token);
 })
 
 // 插入数据
 router.post('/insert', function (req, res) {
-    res.send('uname=' + req.body.uname + '&channel=' + req.body.channel + '&role=' + req.body.role + '&timestamp=' + req.body.timestamp + '&value=' + req.body.value);
+    MongoClient.connect(URL, function (err, conn) {
+        let db = conn.db('engagementSystem');
+        let user = req.body;
+        user.timestamp = new Date().getTime();
+
+        // 如果有相同数据，跳过插入
+        db.collection('users').find(user).toArray().then(result => {
+            if (result.length === 0) {
+                db.collection('users').insertOne(user).finally(() => {
+                    conn.close();
+                })
+            }
+        })
+        res.send('success');
+    })
+})
+
+// 获取即时专注度
+router.post('/getNow', function (req, res) {
+    MongoClient.connect(URL, function (err, conn) {
+        let db = conn.db('engagementSystem');
+        let channel = req.body;
+        db.collection('users').find(channel).toArray().then(result => {
+            let valArr = [];
+            for (let i = 0; i < result.length; i++) {
+                if (Math.abs(result[i].timestamp - new Date().getTime()) < 5 * 1000) {
+                    valArr.push(result[i].value);
+                }
+            }
+            let valAvg = '0';
+            if (valArr.length > 0) {
+                valAvg = ((valArr.reduce((pre, cur) => pre + cur) / valArr.length + 1) * 25).toString();
+            }
+            console.log('valAvg: ' + valAvg);
+            res.send(valAvg);
+        }).then(() => {
+            conn.close();
+        })
+    })
 })
 
 module.exports = router;

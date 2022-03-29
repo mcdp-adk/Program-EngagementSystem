@@ -40,16 +40,20 @@ export default {
       this.user.role = parseInt(this.user.role);
       let thisUser = this.user;
       let xhr = new XMLHttpRequest();
+      // xhr.open('post', host + '/insert', false);
+      // xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+      // xhr.send("uname=" + this.user.uname + "&channel=" + this.user.channel + "&role=" + this.user.role);
+
       xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
           thisUser.token = xhr.responseText;
         }
       }
-      xhr.open('post', host + '/users/insert', false);
+      xhr.open('post', host + '/token', false);
       xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-      xhr.send("uname=" + this.user.uname + "&channel=" + this.user.channel + "&role=" + this.user.role);
-
+      xhr.send("channel=" + this.user.channel);
       this.$emit("receiveData", this.user);
+      alert("保存成功！");
     }
   }
 }

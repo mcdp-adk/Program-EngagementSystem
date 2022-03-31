@@ -61,17 +61,137 @@ router.post('/getNow', function (req, res) {
         let channel = req.body;
         db.collection('users').find(channel).toArray().then(result => {
             let valArr = [];
+            let now = new Date().getTime();
             for (let i = 0; i < result.length; i++) {
-                if (Math.abs(result[i].timestamp - new Date().getTime()) < 5 * 1000) {
-                    valArr.push(result[i].value);
+                if (Math.abs(result[i].timestamp - now) < 5 * 1000) {
+                    valArr.push(parseInt(result[i].value));
                 }
             }
-            let valAvg = '0';
+            let valAvg = 0;
             if (valArr.length > 0) {
-                valAvg = ((valArr.reduce((pre, cur) => pre + cur) / valArr.length + 1) * 25).toString();
+                for (let i = 0; i < valArr.length; i++) {
+                    valAvg += valArr[i];
+                }
+                valAvg = (valAvg / valArr.length + 1) * 25;
             }
             console.log('valAvg: ' + valAvg);
             res.send(valAvg);
+        }).then(() => {
+            conn.close();
+        })
+    })
+})
+
+// 下课 & 整理专注度数据
+router.post('/stopClass', function (req, res) {
+    MongoClient.connect(URL, function (err, conn) {
+        let db = conn.db('engagementSystem');
+        let channel = req.body;
+        let uname = new Set();
+        let data = {
+            channel: channel.channel,
+            value: '',
+            startTime: undefined,
+            endTime: undefined
+        };
+
+        // 整体专注度数据
+        db.collection('users').find(channel).toArray().then(result => {
+            if (result.length > 0) {
+                // 查找最早时间戳与最晚时间戳
+                data.startTime = result[0].timestamp;
+                data.endTime = result[0].timestamp;
+                for (let i = 0; i < result.length; i++) {
+                    if (result[i].timestamp < data.startTime) {
+                        data.startTime = result[i].timestamp;
+                    }
+                    if (result[i].timestamp > data.endTime) {
+                        data.endTime = result[i].timestamp;
+                    }
+                    uname.add(result[i].uname);
+                }
+                data.value += data.startTime + ',' + data.endTime + ',';
+
+                // 获取每隔 1min 的平均专注度
+                for (let time = new Date(data.startTime).getTime(); time < data.endTime; time += 1000 * 60) {
+                    let valArr = [];
+                    for (let i = 0; i < result.length; i++) {
+                        if (result[i].timestamp - time < 1000 * 60 && result[i].timestamp - time > 0) {
+                            valArr.push(parseInt(result[i].value));
+                        }
+                    }
+                    let valAvg = 0;
+                    if (valArr.length > 0) {
+                        for (let i = 0; i < valArr.length; i++) {
+                            valAvg += valArr[i];
+                        }
+                        valAvg = (valAvg / valArr.length + 1) * 25;
+                    }
+                    data.value += valAvg + ',';
+                }
+                data.value = data.value.substring(0, data.value.length - 1);
+
+                // 插入新数据库
+                db.collection(data.channel).insertOne(data);
+
+                // 插入个人数据
+                uname.forEach(item => {
+                    let user = {
+                        uname: item,
+                        value: ''
+                    };
+
+                    for (let time = new Date(data.startTime).getTime(); time < data.endTime; time += 1000 * 60) {
+                        let valArr = [];
+                        for (let i = 0; i < result.length; i++) {
+                            if (result[i].timestamp - time < 1000 * 60 && result[i].timestamp - time > 0 && result[i].uname === item) {
+                                valArr.push(parseInt(result[i].value));
+                            }
+                        }
+                        let valAvg = 0;
+                        if (valArr.length > 0) {
+                            for (let i = 0; i < valArr.length; i++) {
+                                valAvg += valArr[i];
+                            }
+                            valAvg = (valAvg / valArr.length + 1) * 25;
+                        }
+                        user.value += valAvg + ',';
+                    }
+                    user.value = user.value.substring(0, user.value.length - 1);
+
+                    db.collection(data.channel).insertOne(user);
+                })
+            }
+        }).then(() => {
+            // 删除原数据
+            db.collection('users').deleteMany(channel);
+        })
+        res.send('success');
+    })
+})
+
+// 获取整理后的全部数据
+router.post('/getAllData', function (req, res) {
+    MongoClient.connect(URL, function (err, conn) {
+        let db = conn.db('engagementSystem');
+        let channel = req.body;
+
+        db.collection(channel.channel).find(channel).toArray().then(result => {
+            res.send(result[0].value);
+        }).then(() => {
+            conn.close();
+        })
+    })
+})
+
+// 获取整理后的个人数据
+router.post('/getUserData', function (req, res) {
+    MongoClient.connect(URL, function (err, conn) {
+        let db = conn.db('engagementSystem');
+        let user = {uname: req.body.uname};
+
+        db.collection(req.body.channel).find(user).toArray().then(result => {
+            res.send(result[0].value);
         }).then(() => {
             conn.close();
         })

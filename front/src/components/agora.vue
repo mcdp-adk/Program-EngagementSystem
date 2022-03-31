@@ -15,6 +15,9 @@
         <el-col :span="2">
           <el-button @click="leaveButton" id="leave">离开频道</el-button>
         </el-col>
+        <el-col :span="2">
+          <el-button @click="stopClass" v-if="!user.role" id="stopClass">下课</el-button>
+        </el-col>
       </el-row>
     </div>
   </div>
@@ -162,6 +165,12 @@ export default {
         const playerContainer = document.getElementById(options.uid);
         playerContainer.remove();
       }
+    },
+    stopClass() {
+      let xhr = new XMLHttpRequest();
+      xhr.open('post', host + '/stopClass', false);
+      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+      xhr.send('channel=' + this.user.channel);
     }
   },
   mounted() {

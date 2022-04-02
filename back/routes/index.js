@@ -75,7 +75,7 @@ router.post('/getNow', function (req, res) {
                 valAvg = (valAvg / valArr.length + 1) * 25;
             }
             console.log('valAvg: ' + valAvg);
-            res.send(valAvg);
+            res.send(valAvg.toString());
         }).then(() => {
             conn.close();
         })
@@ -192,6 +192,20 @@ router.post('/getUserData', function (req, res) {
 
         db.collection(req.body.channel).find(user).toArray().then(result => {
             res.send(result[0].value);
+        }).then(() => {
+            conn.close();
+        })
+    })
+})
+
+// 获取整理后的所有个人数据
+router.post('/getAllUserData', function (req, res) {
+    console.log(req.body);
+    MongoClient.connect(URL, function (err, conn) {
+        let db = conn.db('engagementSystem');
+
+        db.collection(req.body.channel).find({}).toArray().then(result => {
+            res.json(result);
         }).then(() => {
             conn.close();
         })

@@ -189,8 +189,6 @@ export default {
       xhr.open('post', host + '/getNow', true);
       xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
       xhr.send('channel=' + this.user.channel);
-      console.log(thisOption);
-      console.log(thisAttentionChart);
     },
     getAvgAttention() {
       let sum = 0;

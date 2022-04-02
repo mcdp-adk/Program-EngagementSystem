@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="82b8fc82-0241-417a-b42d-9551653a4e24" name="变更" comment="服务器测试">
+    <list default="true" id="82b8fc82-0241-417a-b42d-9551653a4e24" name="变更" comment="课后整理数据">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front/src/components/agora.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../front/src/components/agora.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../front/src/components/detail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../front/src/components/detail.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front/src/components/study.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../front/src/components/study.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,6 +86,8 @@
       <workItem from="1648540345466" duration="10798000" />
       <workItem from="1648731859747" duration="22000" />
       <workItem from="1648731895251" duration="8633000" />
+      <workItem from="1648741286253" duration="29000" />
+      <workItem from="1648819964671" duration="4199000" />
     </task>
     <task id="LOCAL-00001" summary="Back end initial">
       <created>1644824957592</created>
@@ -146,6 +148,7 @@
     <MESSAGE value="Back end initial" />
     <MESSAGE value="基础数据传递 &amp; 线上 API" />
     <MESSAGE value="服务器测试" />
-    <option name="LAST_COMMIT_MESSAGE" value="服务器测试" />
+    <MESSAGE value="课后整理数据" />
+    <option name="LAST_COMMIT_MESSAGE" value="课后整理数据" />
   </component>
 </project>
